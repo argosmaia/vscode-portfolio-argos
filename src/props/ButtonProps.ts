@@ -1,6 +1,8 @@
+import type React from "react";
+
 export interface ButtonProps {
     children: React.ReactNode;
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     className?: string;
     variante?: "default" | "ghost" | "icon";
 }

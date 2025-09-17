@@ -1,4 +1,3 @@
-import React from "react";
 import type { InputProps } from "../../props/InputProps";
 
 export default function Input({

@@ -1,4 +1,3 @@
-import React from "react";
 import Input from "../atoms/Input";
 import Icon from "../atoms/Icon";
 import { Search } from "lucide-react";
