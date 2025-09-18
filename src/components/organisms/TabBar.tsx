@@ -4,11 +4,11 @@ import Tab from "../molecules/Tab";
 export default function TabBar({ arquivosAbertos, arquivoAtivo, selecionado, onClose }: TabBarProps) {
     return (
         <div className="flex bg-gray-800 border-b border-gray-700 overflow-x-auto">
-            {arquivosAbertos.map(() => (
+            {arquivosAbertos.map((arquivo) => (
                 <Tab
-                    key={arquivo.name}
+                    key={arquivo}
                     file={arquivo}
-                    isActive={arquivoAtivo === arquivo.name}
+                    isActive={arquivoAtivo === arquivo}
                     onSelect={selecionado}
                     onClose={onClose}
                 />

@@ -1,8 +1,6 @@
-import type { FileNode } from "./FileNode";
-
 export interface TabBarProps {
-    arquivosAbertos: FileNode[];
+    arquivosAbertos: string[];
     arquivoAtivo: string | null;
-    selecionado: (arquivo: FileNode) => void;
-    onClose: (arquivo: FileNode) => void;    
+    selecionado: (file: string) => void;
+    onClose: (file: string) => void;    
 }
