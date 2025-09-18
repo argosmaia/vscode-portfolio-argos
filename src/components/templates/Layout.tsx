@@ -7,7 +7,7 @@ import { renderContent } from "../../content/renderContent";
 import Button from "../atoms/Button";
 import { Minus, Square, X } from "lucide-react";
 
-export default function VSCodeLayout() {
+export default function Layout() {
   const [openTabs, setOpenTabs] = useState<string[]>(["Design.tsx"]);
   const [currentTab, setCurrentTab] = useState("Design.tsx");
   const [searchTerm, setSearchTerm] = useState("");

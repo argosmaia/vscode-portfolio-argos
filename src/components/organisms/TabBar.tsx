@@ -1,0 +1,18 @@
+import type { TabBarProps } from "../../props/TabBarProps";
+import Tab from "../molecules/Tab";
+
+export default function TabBar({ arquivosAbertos, arquivoAtivo, selecionado, onClose }: TabBarProps) {
+    return (
+        <div className="flex bg-gray-800 border-b border-gray-700 overflow-x-auto">
+            {arquivosAbertos.map(() => (
+                <Tab
+                    key={arquivo.name}
+                    file={arquivo}
+                    isActive={arquivoAtivo === arquivo.name}
+                    onSelect={selecionado}
+                    onClose={onClose}
+                />
+            ))}
+        </div>
+    );
+}
