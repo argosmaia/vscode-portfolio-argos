@@ -14,7 +14,7 @@ export default function Tab({ arquivo, estaAtivo, estaSelecionado, estaFechado }
       onClick={() => estaSelecionado(arquivo)}
     >
       <Icon icon={File} size={14} className="mr-2" />
-      <span className="text-sm text-gray-200 mr-2">{arquivo}</span>
+      <span className="text-sm text-gray-200 mr-2">{arquivo.name}</span>
       <Button
         variante="icon"
         className="w-4 h-4 ml-auto hover:bg-gray-600 rounded"

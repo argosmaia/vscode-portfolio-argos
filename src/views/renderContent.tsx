@@ -1,8 +1,4 @@
-// import DesignContent from "./DesignContent";
-// import CodigosContent from "./CodigosContent";
-// import ProjetosContent from "./ProjetosContent";
-// import SobreContent from "./SobreContent";
-// import ContatoContent from "./ContatoContent";
+import DesignContent from "./DesignContent";
 
 export function renderContent(currentTab: string) {
   switch (currentTab) {

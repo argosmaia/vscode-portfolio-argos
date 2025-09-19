@@ -4,8 +4,13 @@ import StatusBar from "../atoms/StatusBar";
 import { renderContent } from "../../views/renderContent";
 import type { LayoutProps } from "../../props/LayoutProps";
 
-export default function Layout({ arquivosAbertos, arquivoAtivo, arquivoSelecionado, arquivoFechar }: LayoutProps) {
-  
+export default function Layout({
+  arquivosAbertos,
+  arquivoAtivo,
+  arquivoSelecionado,
+  arquivoFechar,
+}: LayoutProps) {
+
   const ativo = arquivosAbertos.find((f) => f.name === arquivoAtivo);
 
   return (
@@ -16,11 +21,15 @@ export default function Layout({ arquivosAbertos, arquivoAtivo, arquivoSeleciona
           <TabBar
             arquivosAbertos={arquivosAbertos}
             arquivoAtivo={arquivoAtivo}
-            arquivoSelecionado={arquivoSelecionado}
+            estaSelecionado={arquivoSelecionado}
             estaFechado={arquivoFechar}
           />
           <div className="flex-1 bg-gray-950 text-gray-100 p-4 overflow-auto">
-            {ativo ? renderContent(ativo) : <span className="text-gray-500">Nenhum arquivo aberto</span>}
+            {ativo ? (
+              renderContent(ativo.name)
+            ) : (
+              <span className="text-gray-500">Nenhum arquivo aberto</span>
+            )}
           </div>
         </div>
       </div>

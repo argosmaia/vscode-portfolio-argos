@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/templates/Layout";
-import { FileNode } from "./props/FileNode";
-import Layout from "./components/templates/Layout";
+import type { FileNode } from "./props/FileNode";
+import DesignContent from "./views/DesignContent";
 
 // // páginas
 // import Home from "./pages/Home";
@@ -10,34 +10,34 @@ import Layout from "./components/templates/Layout";
 // import Settings from "./pages/Settings";
 
 export default function App() {
-  const [openFiles, setOpenFiles] = useState<FileNode[]>([]);
-  const [activeFile, setActiveFile] = useState<string | null>(null);
+  const [arquivosAbertos, setArquivosAbertos] = useState<FileNode[]>([]);
+  const [arquivoAtivo, setArquivoAtivo] = useState<string | null>(null);
 
-  const handleSelectFile = (file: FileNode) => {
-    if (!openFiles.find((f) => f.name === file.name)) {
-      setOpenFiles([...openFiles, file]);
+  const handleSelectFile = (arquivo: FileNode) => {
+    if (!arquivosAbertos.find((f) => f.name === arquivo.name)) {
+      setArquivosAbertos([...arquivosAbertos, arquivo]);
     }
-    setActiveFile(file.name);
+    setArquivoAtivo(arquivo.name);
   };
 
-  const handleCloseFile = (file: FileNode) => {
-    setOpenFiles(openFiles.filter((f) => f.name !== file.name));
-    if (activeFile === file.name) {
-      setActiveFile(openFiles.length > 1 ? openFiles[0].name : null);
+  const handleCloseFile = (arquivo: FileNode) => {
+    setArquivosAbertos(arquivosAbertos.filter((f) => f.name !== arquivo.name));
+    if (arquivoAtivo === arquivo.name) {
+      setArquivoAtivo(arquivosAbertos.length > 1 ? arquivosAbertos[0].name : null);
     }
   };
 
   return (
     <Layout
-      openFiles={openFiles}
-      activeFile={activeFile}
-      onSelectFile={handleSelectFile}
-      onCloseFile={handleCloseFile}
+      arquivosAbertos={arquivosAbertos}
+      arquivoAtivo={arquivoAtivo}
+      estaSelecionado={handleSelectFile}
+      estaFechado={handleCloseFile}
     >
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/" element={<DesignContent />} />
+        {/* <Route path="/about" element={<About />} />
+        <Route path="/settings" element={<Settings />} /> */}
       </Routes>
     </Layout>
   );

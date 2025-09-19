@@ -1,6 +1,8 @@
+import type { FileNode } from "./FileNode";
+
 export interface TabProps {
-    arquivo: string;
-    estaAtivo: boolean;
-    estaSelecionado: (arquivo: string) => void;
-    estaFechado: (arquivo: string) => string | null;
+  arquivo: FileNode;
+  estaAtivo: boolean;
+  estaSelecionado: (arquivo: FileNode) => void;
+  estaFechado: (arquivo: FileNode) => FileNode | null;
 }
