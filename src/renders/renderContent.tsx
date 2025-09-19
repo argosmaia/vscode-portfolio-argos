@@ -1,4 +1,8 @@
-import DesignContent from "./DesignContent";
+import CodigosContent from "../views/CodigosContent";
+import ContatoContent from "../views/ContatoContent";
+import DesignContent from "../views/DesignContent";
+import ProjetosContent from "../views/ProjetosContent";
+import SobreContent from "../views/SobreContent";
 
 export function renderContent(currentTab: string) {
   switch (currentTab) {
@@ -13,6 +17,6 @@ export function renderContent(currentTab: string) {
     case "Contato.tsx":
       return <ContatoContent />;
     default:
-      return <CodigosContent />;
+      return <DesignContent />;
   }
 }

@@ -1,6 +1,6 @@
 export interface FileNode {
-  name: string;
-  type: "file" | "folder";
+  nome: string;
+  tipo: "file" | "folder";
   icon?: string;
   children?: FileNode[];
 }

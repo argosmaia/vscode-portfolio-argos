@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/templates/Layout";
 import type { FileNode } from "./props/FileNode";
@@ -13,17 +13,18 @@ export default function App() {
   const [arquivosAbertos, setArquivosAbertos] = useState<FileNode[]>([]);
   const [arquivoAtivo, setArquivoAtivo] = useState<string | null>(null);
 
-  const handleSelectFile = (arquivo: FileNode) => {
-    if (!arquivosAbertos.find((f) => f.name === arquivo.name)) {
+  const selecionaArquivo = (arquivo: FileNode | null) => {
+    if (!arquivo) return;
+    if (!arquivosAbertos.find((f) => f.nome === arquivo.nome)) {
       setArquivosAbertos([...arquivosAbertos, arquivo]);
     }
-    setArquivoAtivo(arquivo.name);
+    setArquivoAtivo(arquivo.nome);
   };
 
-  const handleCloseFile = (arquivo: FileNode) => {
-    setArquivosAbertos(arquivosAbertos.filter((f) => f.name !== arquivo.name));
-    if (arquivoAtivo === arquivo.name) {
-      setArquivoAtivo(arquivosAbertos.length > 1 ? arquivosAbertos[0].name : null);
+  const fecharArquivo = (arquivo: FileNode) => {
+    setArquivosAbertos(arquivosAbertos.filter((f) => f.nome !== arquivo?.nome));
+    if (arquivoAtivo === arquivo?.nome) {
+      setArquivoAtivo(arquivosAbertos.length > 1 ? arquivosAbertos[0].nome : null);
     }
   };
 
@@ -31,8 +32,8 @@ export default function App() {
     <Layout
       arquivosAbertos={arquivosAbertos}
       arquivoAtivo={arquivoAtivo}
-      estaSelecionado={handleSelectFile}
-      estaFechado={handleCloseFile}
+      estaSelecionado={selecionaArquivo}
+      estaFechado={fecharArquivo}
     >
       <Routes>
         <Route path="/" element={<DesignContent />} />

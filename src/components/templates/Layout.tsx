@@ -1,17 +1,17 @@
 import ActivityBar from "../organisms/ActivityBar";
 import TabBar from "../organisms/TabBar";
 import StatusBar from "../atoms/StatusBar";
-import { renderContent } from "../../views/renderContent";
+import { renderContent } from "../../renders/renderContent";
 import type { LayoutProps } from "../../props/LayoutProps";
 
 export default function Layout({
   arquivosAbertos,
   arquivoAtivo,
-  arquivoSelecionado,
-  arquivoFechar,
+  estaSelecionado,
+  estaFechado,
 }: LayoutProps) {
 
-  const ativo = arquivosAbertos.find((f) => f.name === arquivoAtivo);
+  const ativo = arquivosAbertos.find((f) => f.nome === arquivoAtivo);
 
   return (
     <div className="flex flex-col h-screen">
@@ -21,12 +21,12 @@ export default function Layout({
           <TabBar
             arquivosAbertos={arquivosAbertos}
             arquivoAtivo={arquivoAtivo}
-            estaSelecionado={arquivoSelecionado}
-            estaFechado={arquivoFechar}
+            estaSelecionado={estaSelecionado}
+            estaFechado={estaFechado}
           />
           <div className="flex-1 bg-gray-950 text-gray-100 p-4 overflow-auto">
             {ativo ? (
-              renderContent(ativo.name)
+              renderContent(ativo.nome)
             ) : (
               <span className="text-gray-500">Nenhum arquivo aberto</span>
             )}

@@ -1,9 +1,9 @@
 export interface FileItemProps {
-    file: {
-        name: string;
+    arquivo: {
+        nome: string;
         icon?: string;
     };
-    level: number;
-    isSelected: boolean;
-    onSelect: (fileName: string) => void;
+    nivel: number;
+    estaSelecionado: boolean;
+    selecionado: (arquivoNome: string) => void;
 }

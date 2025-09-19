@@ -14,36 +14,36 @@ export default function FileExplorer({
     const [pastasExpandidas, setPastasExpandidas] = useState<string[]>(["src", "components"]);
 
     const estrutura: FileNode[] = [{
-        name: 'src',
-        type: 'folder',
+        nome: 'src',
+        tipo: 'folder',
         children: [
             {
-            name: 'components',
-            type: 'folder',
+            nome: 'components',
+            tipo: 'folder',
             children: [
-                { name: 'Design.tsx', type: 'file', icon: '⚛️' },
-                { name: 'Codigos.tsx', type: 'file', icon: '⚛️' },
-                { name: 'Projetos.tsx', type: 'file', icon: '⚛️' },
-                { name: 'Sobre.tsx', type: 'file', icon: '⚛️' },
-                { name: 'Contato.tsx', type: 'file', icon: '⚛️' }
+                { nome: 'Design.tsx', tipo: 'file', icon: '⚛️' },
+                { nome: 'Codigos.tsx', tipo: 'file', icon: '⚛️' },
+                { nome: 'Projetos.tsx', tipo: 'file', icon: '⚛️' },
+                { nome: 'Sobre.tsx', tipo: 'file', icon: '⚛️' },
+                { nome: 'Contato.tsx', tipo: 'file', icon: '⚛️' }
             ]
             },
             {
-            name: 'assets',
-            type: 'folder',
+            nome: 'assets',
+            tipo: 'folder',
             children: [
-                { name: 'images', type: 'folder', children: [] },
-                { name: 'styles', type: 'folder', children: [] }
+                { nome: 'images', tipo: 'folder', children: [] },
+                { nome: 'styles', tipo: 'folder', children: [] }
             ]
             },
-            { name: 'App.tsx', type: 'file', icon: '⚛️' },
-            { name: 'main.tsx', type: 'file', icon: '⚛️' }
+            { nome: 'App.tsx', tipo: 'file', icon: '⚛️' },
+            { nome: 'main.tsx', tipo: 'file', icon: '⚛️' }
         ]
         },
-        { name: 'package.json', type: 'file', icon: '📦' },
-        { name: 'tsconfig.json', type: 'file', icon: '🔧' },
-        { name: 'tailwind.config.js', type: 'file', icon: '🎨' },
-        { name: 'README.md', type: 'file', icon: '📝' }
+        { nome: 'package.json', tipo: 'file', icon: '📦' },
+        { nome: 'tsconfig.json', tipo: 'file', icon: '🔧' },
+        { nome: 'tailwind.config.js', tipo: 'file', icon: '🎨' },
+        { nome: 'README.md', tipo: 'file', icon: '📝' }
     ];
 
     const mudarPasta = (nomePasta: string) => {
@@ -55,13 +55,13 @@ export default function FileExplorer({
     };
 
     const renderizaArquivos = (arquivos: FileNode, level = 0) => {
-        const expandido = pastasExpandidas.includes(arquivos.name);
-        const selecionado = arquivoAtual === arquivos.name;
+        const expandido = pastasExpandidas.includes(arquivos.nome);
+        const selecionado = arquivoAtual === arquivos.nome;
         
-        if(arquivos.type == "folder") {
+        if(arquivos.tipo == "folder") {
             return(
                 <FolderItem
-                    key={arquivos.name}
+                    key={arquivos.nome}
                     folder={arquivos}
                     level={level}
                     isExpanded={expandido}
@@ -73,11 +73,11 @@ export default function FileExplorer({
 
         return (
             <FileItem
-                key={arquivos.name}
-                file={arquivos}
-                level={level}
-                isSelected={selecionado}
-                onSelect={arquivoSelecionado}
+                key={arquivos.nome}
+                arquivo={arquivos}
+                nivel={level}
+                estaSelecionado={selecionado}
+                selecionado={arquivoSelecionado}
             />
         );
     }
