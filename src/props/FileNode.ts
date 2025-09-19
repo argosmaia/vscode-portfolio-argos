@@ -1,4 +1,4 @@
-export interface FileNode {
+export type FileNode = {
   nome: string;
   tipo: "file" | "folder";
   icon?: string;
