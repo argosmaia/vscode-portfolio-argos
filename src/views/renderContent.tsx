@@ -17,6 +17,6 @@ export function renderContent(currentTab: string) {
     case "Contato.tsx":
       return <ContatoContent />;
     default:
-      return <DesignContent />;
+      return <CodigosContent />;
   }
 }

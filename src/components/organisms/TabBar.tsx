@@ -1,16 +1,16 @@
 import type { TabBarProps } from "../../props/TabBarProps";
 import Tab from "../molecules/Tab";
 
-export default function TabBar({ arquivosAbertos, arquivoAtivo, selecionado, onClose }: TabBarProps) {
+export default function TabBar({ arquivosAbertos, arquivoAtivo, estaSelecionado, estaFechado }: TabBarProps) {
     return (
         <div className="flex bg-gray-800 border-b border-gray-700 overflow-x-auto">
             {arquivosAbertos.map((arquivo) => (
                 <Tab
                     key={arquivo}
-                    file={arquivo}
-                    isActive={arquivoAtivo === arquivo}
-                    onSelect={selecionado}
-                    onClose={onClose}
+                    arquivo={arquivo}
+                    estaAtivo={arquivoAtivo === arquivo}
+                    estaSelecionado={estaSelecionado}
+                    estaFechado={estaFechado}
                 />
             ))}
         </div>

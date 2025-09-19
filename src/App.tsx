@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/templates/Layout";
-// import { FileStructure } from "./types";
-import VSCodeLayout from "./components/templates/Layout";
+import { FileNode } from "./props/FileNode";
+import Layout from "./components/templates/Layout";
 
 // // páginas
 // import Home from "./pages/Home";
@@ -10,17 +10,17 @@ import VSCodeLayout from "./components/templates/Layout";
 // import Settings from "./pages/Settings";
 
 export default function App() {
-  const [openFiles, setOpenFiles] = useState<FileStructure[]>([]);
+  const [openFiles, setOpenFiles] = useState<FileNode[]>([]);
   const [activeFile, setActiveFile] = useState<string | null>(null);
 
-  const handleSelectFile = (file: FileStructure) => {
+  const handleSelectFile = (file: FileNode) => {
     if (!openFiles.find((f) => f.name === file.name)) {
       setOpenFiles([...openFiles, file]);
     }
     setActiveFile(file.name);
   };
 
-  const handleCloseFile = (file: FileStructure) => {
+  const handleCloseFile = (file: FileNode) => {
     setOpenFiles(openFiles.filter((f) => f.name !== file.name));
     if (activeFile === file.name) {
       setActiveFile(openFiles.length > 1 ? openFiles[0].name : null);
@@ -28,7 +28,7 @@ export default function App() {
   };
 
   return (
-    <VSCodeLayout
+    <Layout
       openFiles={openFiles}
       activeFile={activeFile}
       onSelectFile={handleSelectFile}
@@ -39,6 +39,6 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
-    </VSCodeLayout>
+    </Layout>
   );
 }

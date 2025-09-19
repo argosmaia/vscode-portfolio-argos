@@ -2,6 +2,7 @@ import Icon from "../atoms/Icon";
 import { File, Search, GitBranch, Settings } from "lucide-react";
 
 export default function ActivityBar() {
+  
   const items = [
     { icon: File, label: "Explorer" },
     { icon: Search, label: "Search" },

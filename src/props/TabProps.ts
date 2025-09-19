@@ -1,6 +1,6 @@
 export interface TabProps {
-    file: string;
-    isActive: boolean;
-    onSelect: (file: string) => void;
-    onClose: (file: string) => void;
+    arquivo: string;
+    estaAtivo: boolean;
+    estaSelecionado: (arquivo: string) => void;
+    estaFechado: (arquivo: string) => string | null;
 }

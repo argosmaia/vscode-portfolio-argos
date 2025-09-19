@@ -1,19 +1,12 @@
-import React from "react";
 import ActivityBar from "../organisms/ActivityBar";
 import TabBar from "../organisms/TabBar";
 import StatusBar from "../atoms/StatusBar";
-import { renderContent } from "../../content/renderContent";
-import type { FileNode } from "../../props/FileNode";
+import { renderContent } from "../../views/renderContent";
+import type { LayoutProps } from "../../props/LayoutProps";
 
-interface LayoutProps {
-  openFiles: FileNode[];
-  activeFile: string | null;
-  onSelectFile: (file: FileNode) => void;
-  onCloseFile: (file: FileNode) => void;
-}
-
-export default function Layout({ openFiles, activeFile, onSelectFile, onCloseFile }: LayoutProps) {
-  const active = openFiles.find((f) => f.name === activeFile);
+export default function Layout({ arquivosAbertos, arquivoAtivo, arquivoSelecionado, arquivoFechar }: LayoutProps) {
+  
+  const ativo = arquivosAbertos.find((f) => f.name === arquivoAtivo);
 
   return (
     <div className="flex flex-col h-screen">
@@ -21,13 +14,13 @@ export default function Layout({ openFiles, activeFile, onSelectFile, onCloseFil
         <ActivityBar />
         <div className="flex flex-col flex-1">
           <TabBar
-            openFiles={openFiles}
-            activeFile={activeFile}
-            onSelect={onSelectFile}
-            onClose={onCloseFile}
+            arquivosAbertos={arquivosAbertos}
+            arquivoAtivo={arquivoAtivo}
+            arquivoSelecionado={arquivoSelecionado}
+            estaFechado={arquivoFechar}
           />
           <div className="flex-1 bg-gray-950 text-gray-100 p-4 overflow-auto">
-            {active ? renderContent(active) : <span className="text-gray-500">Nenhum arquivo aberto</span>}
+            {ativo ? renderContent(ativo) : <span className="text-gray-500">Nenhum arquivo aberto</span>}
           </div>
         </div>
       </div>
