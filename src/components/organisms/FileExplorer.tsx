@@ -54,7 +54,7 @@ export default function FileExplorer({
         );
     };
 
-    const renderizaArquivos = (arquivos: FileNode, level = 0) => {
+    const renderizaArquivos = (arquivos: FileNode, nivel = 0) => {
         const expandido = pastasExpandidas.includes(arquivos.nome);
         const selecionado = arquivoAtual === arquivos.nome;
         
@@ -62,10 +62,10 @@ export default function FileExplorer({
             return(
                 <FolderItem
                     key={arquivos.nome}
-                    folder={arquivos}
-                    level={level}
-                    isExpanded={expandido}
-                    isSelected={selecionado}
+                    pasta={arquivos}
+                    nivel={nivel}
+                    estaExpandido={expandido}
+                    selecionado={selecionado}
                     onToggle={mudarPasta}
                 />
             );
@@ -75,7 +75,7 @@ export default function FileExplorer({
             <FileItem
                 key={arquivos.nome}
                 arquivo={arquivos}
-                nivel={level}
+                nivel={nivel}
                 estaSelecionado={selecionado}
                 selecionado={arquivoSelecionado}
             />

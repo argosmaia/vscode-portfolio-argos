@@ -6,9 +6,9 @@ export default function TabBar({ arquivosAbertos, arquivoAtivo, estaSelecionado,
     <div className="flex bg-gray-800 border-b border-gray-700 overflow-x-auto">
       {arquivosAbertos.map((arquivo) => (
         <Tab
-          key={arquivo.name}
+          key={arquivo.nome}
           arquivo={arquivo} 
-          estaAtivo={arquivoAtivo === arquivo.name}
+          estaAtivo={arquivoAtivo === arquivo.nome}
           estaSelecionado={estaSelecionado}
           estaFechado={estaFechado}
         />

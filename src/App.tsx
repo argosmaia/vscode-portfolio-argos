@@ -10,8 +10,16 @@ import DesignContent from "./views/DesignContent";
 // import Settings from "./pages/Settings";
 
 export default function App() {
-  const [arquivosAbertos, setArquivosAbertos] = useState<FileNode[]>([]);
-  const [arquivoAtivo, setArquivoAtivo] = useState<string | null>(null);
+  const [arquivosAbertos, setArquivosAbertos] = useState<FileNode[]>([
+      { nome: "Design.tsx" },
+      { nome: "Codigos.tsx" },
+      { nome: "Projetos.tsx" },
+      { nome: "Sobre.tsx" },
+      { nome: "Contato.tsx" },
+    ]
+  );
+
+  const [arquivoAtivo, setArquivoAtivo] = useState("Design.tsx");
 
   const selecionaArquivo = (arquivo: FileNode | null) => {
     if (!arquivo) return;

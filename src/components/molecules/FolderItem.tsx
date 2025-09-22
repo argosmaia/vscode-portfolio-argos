@@ -4,46 +4,48 @@ import Icon from "../atoms/Icon";
 import FileItem from "./FileItem";
 
 export default function FolderItem({
-    folder,
-    level,
-    isExpanded,
-    isSelected,
-    onToggle
-}: FolderItemProps ) {
-    return(
-        <div>
-            <div
-                className={`flex items-center py-1 px-2 hover:bg-gray-700/50 cursor-pointer select-none ${
-                isSelected ? "bg-gray-600" : ""
-                }`}
-                style={{ paddingLeft: `${level * 12 + 8}px` }}
-                onClick={() => onToggle(folder.name)}
-            >
-                <Icon icon={isExpanded ? FolderOpen : Folder} size={14} />
-                <span className="ml-2 text-sm text-gray-200">{folder.name}</span>
-            </div>
+  pasta,
+  nivel,
+  estaExpandido,
+  selecionado,
+  onToggle
+}: FolderItemProps) {
+  return (
+    <div>
+      {/* Linha da pasta */}
+      <div
+        className={`flex items-center py-1 px-2 hover:bg-gray-700/50 cursor-pointer select-none ${
+          selecionado ? "bg-gray-600" : ""
+        }`}
+        style={{ paddingLeft: `${nivel * 12 + 8}px` }}
+        onClick={() => onToggle(pasta.nome)}
+      >
+        <Icon icon={estaExpandido ? FolderOpen : Folder} tamanho={14} />
+        <span className="ml-2 text-sm text-gray-200">{pasta.nome}</span>
+      </div>
 
-            {isExpanded &&
-                folder.children?.map((child) =>
-                child.type === "folder" ? (
-                    <FolderItem
-                        key={child.name}
-                        folder={child}
-                        level={level + 1}
-                        isExpanded={false}
-                        isSelected={isSelected}
-                        onToggle={onToggle}
-                    />
-                ) : (
-                    <FileItem
-                        key={child.name}
-                        file={child}
-                        level={level + 1}
-                        isSelected={isSelected}
-                        onSelect={() => onToggle(child.name)}
-                    />
-                )
-                )}
-        </div>
-    );
+      {/* Renderiza filhos se expandido */}
+      {estaExpandido &&
+        pasta.children?.map((child) =>
+          child.tipo === "folder" ? (
+            <FolderItem
+              key={child.nome}
+              pasta={child}
+              nivel={nivel + 1}
+              estaExpandido={false}   // ⚠️ Aqui você precisa passar o estado real (ex: pastasExpandidas.includes(child.nome))
+              selecionado={selecionado}
+              onToggle={onToggle}
+            />
+          ) : (
+            <FileItem
+              key={child.nome}
+              arquivo={child}
+              nivel={nivel + 1}
+              estaSelecionado={selecionado}
+              selecionado={() => onToggle(child.nome)} // ⚠️ Nome do prop era "onSelect", não "selecionado"
+            />
+          )
+        )}
+    </div>
+  );
 }
