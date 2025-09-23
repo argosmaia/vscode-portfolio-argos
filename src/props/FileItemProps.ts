@@ -1,9 +1,10 @@
+import type { FileNode } from "./FileNode";
+
 export interface FileItemProps {
-    arquivo: {
-        nome: string;
-        icon?: string;
-    };
-    nivel: number;
-    estaSelecionado: boolean;
-    selecionado: (arquivoNome: string) => void;
+  arquivo: FileNode;
+  nivel?: number;
+  estaSelecionado: boolean;
+  onClick: (arquivoNome: string) => void;
+  expandido?: boolean;
+  onToggle?: () => void;
 }
