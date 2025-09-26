@@ -4,5 +4,5 @@ export interface TabProps {
   arquivo: FileNode;
   estaAtivo: boolean;
   estaSelecionado: (arquivo: FileNode) => void;
-  estaFechado: (arquivo: FileNode) => void;;
+  estaFechado: (arquivo: FileNode) => void;
 }

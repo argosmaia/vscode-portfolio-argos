@@ -1,8 +1,16 @@
-export default function StatusBar() {
+export function StatusBar() {
   return (
-    <div className="h-6 bg-gray-900 border-t border-gray-700 text-xs text-gray-300 px-3 flex items-center justify-between">
-      <span>⚡ Ready</span>
-      <span>main · TypeScript</span>
+    <div className="bg-blue-600 px-4 py-1 text-sm flex items-center justify-between">
+      <div className="flex items-center space-x-4">
+        <span>🌿 main</span>
+        <span>⚠️ 0  ❌ 0</span>
+      </div>
+      <div className="flex items-center space-x-4">
+        <span>TypeScript React</span>
+        <span>UTF-8</span>
+        <span>LF</span>
+        <span>Ln 1, Col 1</span>
+      </div>
     </div>
   );
 }

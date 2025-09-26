@@ -4,7 +4,7 @@ export interface FileItemProps {
   arquivo: FileNode;
   nivel?: number;
   estaSelecionado: boolean;
-  onClick: (arquivoNome: string) => void;
+  onClick: (arquivo: FileNode) => void;
   expandido?: boolean;
   onToggle?: () => void;
 }

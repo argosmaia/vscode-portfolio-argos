@@ -1,8 +1,8 @@
-import CodigosContent from "../views/CodigosContent";
-import ContatoContent from "../views/ContatoContent";
-import DesignContent from "../views/DesignContent";
-import ProjetosContent from "../views/ProjetosContent";
-import SobreContent from "../views/SobreContent";
+import CodigosContent from "../components/templates/CodigosContent";
+import ContatoContent from "../components/templates/ContatoContent";
+import DesignContent from "../components/templates/DesignContent";
+import ProjetosContent from "../components/templates/ProjetosContent";
+import SobreContent from "../components/templates/SobreContent";
 
 export function renderContent(currentTab: string) {
   switch (currentTab) {
